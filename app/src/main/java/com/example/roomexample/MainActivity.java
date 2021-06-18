@@ -2,43 +2,50 @@ package com.example.roomexample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
+
+import java.io.IOException;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
-    String getName() {
-        EditText editText = findViewById(R.id.name);
-        String content = editText.getText().toString();
-        String name;
-        try {
-            name = Integer.toHexString(int i);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this,"ошибка ввода возраста: "+ e.getMessage(), Toast.LENGTH_SHORT).show();
-            name = a;
-        }
-        return name;
-    }
-
-    int getAge() {
-        EditText editText = findViewById(R.id.age);
-        String content = editText.getText().toString();
-
-        int age;
-        try {
-            age = Integer.parseInt(content);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this,"ошибка парсинга строки: "+ e.getMessage(), Toast.LENGTH_LONG).show();
-            age = 0;
-        }
-        return age;
-    }
+    EditText name;
+    EditText age;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        name = findViewById(R.id.name);
+        age = findViewById(R.id.age);
+        button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                System.out.println("нажат");
+                Toast.makeText(v.getContext(), "Вы " + name + " и Вам " + age + " лет", Toast.LENGTH_LONG).show();
+                Snackbar.make(v, "привет2", 3000).show();
+            }
+        });
     }
 }
